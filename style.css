@@ -154,6 +154,10 @@ button:hover {
   margin-bottom: 40px;
 }
 
+input:user-invalid {
+  border-color: #c0392b;
+}
+
 @media (max-width: 560px) {
   #new-post-form {
     grid-template-columns: 1fr;

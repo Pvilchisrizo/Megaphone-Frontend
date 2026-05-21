@@ -13,9 +13,21 @@
     <p id="tagline">Say it louder. Or don't. We'll post it either way.</p>
     <form id="new-post-form">
       <label for="post-body">Post body:</label>
-      <input type="text" name="body" id="post-body" />
+      <input
+        type="text"
+        name="body"
+        id="post-body"
+        required
+        title="Please write something to post"
+      />
       <label for="post-user">Username:</label>
-      <input type="text" name="user" id="post-user" />
+      <input
+        type="text"
+        name="user"
+        id="post-user"
+        required
+        title="Please enter your username"
+      />
       <button type="submit">POST</button>
     </form>
     <ul id="all-posts"></ul>
