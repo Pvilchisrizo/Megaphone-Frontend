@@ -1,6 +1,6 @@
 const form = document.getElementById("new-post-form");
-const baseURL = `https://megaphone-backend-paloma.onrender.com`;
-// const baseURL = `http://localhost:3000`;
+// const baseURL = `https://megaphone-backend-paloma.onrender.com`;
+const baseURL = `http://localhost:3000`;
 
 const getPosts = async () => {
   const response = await fetch(`${baseURL}/posts`);
@@ -31,12 +31,12 @@ const addPostsToPage = (posts) => {
     postBody.innerText = post.body;
     usernameLabel.innerText = post.author;
 
-    postMeta.appendChild(usernameLabel);
+    // postMeta.appendChild(usernameLabel);
 
     const secondsSincePosted = Math.round(
       (Date.now() - post.timecreated) / 1000
     );
-    let unitOfTime = "second";
+    let unitOfTime = "seconds";
     let numberOfUnits = secondsSincePosted;
 
     if (secondsSincePosted >= 60) {
@@ -58,7 +58,7 @@ const addPostsToPage = (posts) => {
     timeLabel.innerText = `Posted ${numberOfUnits} ${unitOfTime}${
       numberOfUnits !== 1 ? "s" : ""
     } ago.`;
-    postMeta.appendChild(timeLabel);
+    // postMeta.appendChild(timeLabel);
 
     deleteButton.addEventListener("click", async () => {
       await fetch(`${baseURL}/posts/${post._id}`, { method: "DELETE" });
@@ -69,8 +69,13 @@ const addPostsToPage = (posts) => {
     newListItem.appendChild(postBody);
     newListItem.appendChild(postMeta);
 
+    // postMeta.appendChild(deleteButton);
+    const postInfo = document.createElement("div");
+    postInfo.className = "post-info";
+    postInfo.appendChild(usernameLabel);
+    postInfo.appendChild(timeLabel);
+    postMeta.appendChild(postInfo);
     postMeta.appendChild(deleteButton);
-
     allPosts.appendChild(newListItem);
   });
 };

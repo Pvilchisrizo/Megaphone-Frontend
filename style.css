@@ -1,18 +1,32 @@
 @import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 :root {
-  color: #111111;
-  background: #ffffff;
+  color: #f2eff5;
+  background: #547475;
   font-family: "Atkinson Hyperlegible", sans-serif;
 }
 
 body {
   margin: 0 auto;
   min-height: 100vh;
-  max-width: 720px;
+  max-width: 1000px;
   padding: 24px 16px 40px;
-  background: #ffffff;
-  color: #111111;
+  background: #f2eff5;
+  color: #0e0e0f;
+}
+h1 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin-bottom: 30px;
+  color: #547475;
+}
+
+#tagline {
+  font-style: italic;
+  color: #547475;
+  margin-bottom: 24px;
+  font-size: 1rem;
 }
 
 #new-post-form {
@@ -25,29 +39,33 @@ body {
 label {
   display: flex;
   align-items: center;
-  font-size: 0.9rem;
-  font-weight: 700;
+  font-size: 1rem;
+  font-weight: 900;
 }
 
 input,
 button {
-  width: 100%;
-  border: 1px solid #111111;
-  border-radius: 0;
-  background: #ffffff;
+  width: 98%;
+  border-radius: 5px;
+  background: #f2eff5;
   color: inherit;
   font: inherit;
+  border: 1px solid #062423;
 }
 
 input {
   height: 36px;
-  padding: 4px 10px;
-  line-height: 1.2;
+  padding: 10px 10px;
 }
 
 button {
   min-height: 48px;
   padding: 12px;
+  border-radius: 5px;
+  background: #547475;
+  color: #0e0e0f;
+  font-size: larger;
+  border: 0ch;
 }
 
 input::placeholder {
@@ -56,21 +74,22 @@ input::placeholder {
 
 input:focus,
 button:focus {
-  outline: 2px solid #111111;
+  outline: 2px solid #062423;
   outline-offset: 2px;
 }
 
 button {
-  grid-column: 2;
-  justify-self: center;
+  grid-column: 1 / -1; /* spans all columns regardless of count */
+  justify-self: end;
   width: auto;
   min-width: 160px;
-  font-weight: 700;
+  font-weight: 500;
   cursor: pointer;
 }
 
 button:hover {
-  background: #f2f2f2;
+  background: #062423;
+  color: #a8bebd;
 }
 
 #all-posts {
@@ -87,8 +106,11 @@ button:hover {
 }
 
 .post {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
   padding: 16px 0;
-  border-top: 1px solid #cccccc;
+  border-top: 1px solid #062423;
 }
 
 .post-body,
@@ -103,18 +125,33 @@ button:hover {
 }
 
 .post-meta {
-  color: #8b8484;
+  color: #547475;
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   margin-top: 6px;
 }
 
-.post-meta p {
-  margin: 0 14px;
+.post-info {
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+}
+
+.post-info p {
+  margin: 0;
 }
 
 .delete-button {
   cursor: pointer;
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-right: 30px;
+  /* outline: 1px solid #062423;
+  outline-offset: 10px;
+  border-radius: 10%; */
+  margin-bottom: 40px;
 }
 
 @media (max-width: 560px) {
