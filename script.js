@@ -62,10 +62,12 @@ const addPostsToPage = (posts) => {
 
     deleteButton.addEventListener("click", async () => {
       await fetch(`${baseURL}/posts/${post._id}`, { method: "DELETE" });
-      newListItem.appendChild(postBody);
-      newListItem.appendChild(postMeta);
+
       getPosts();
     });
+
+    newListItem.appendChild(postBody);
+    newListItem.appendChild(postMeta);
 
     // postMeta.appendChild(deleteButton);
     const postInfo = document.createElement("div");
