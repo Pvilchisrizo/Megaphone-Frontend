@@ -36,7 +36,7 @@ const addPostsToPage = (posts) => {
     const secondsSincePosted = Math.round(
       (Date.now() - post.timecreated) / 1000
     );
-    let unitOfTime = "seconds";
+    let unitOfTime = "second";
     let numberOfUnits = secondsSincePosted;
 
     if (secondsSincePosted >= 60) {
