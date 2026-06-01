@@ -82,6 +82,8 @@ const addPostsToPage = (posts) => {
 
 getPosts();
 
+const usernameClickEvent = (event) => {};
+
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
 
