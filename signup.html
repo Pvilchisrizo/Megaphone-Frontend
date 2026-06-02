@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Soapbox</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="speaker.png" type="image/png" />
+  </head>
+  <body>
+    <h1>Sign up page</h1>
+    <form id="new-user">
+      <label for="new-username">Username: </label>
+      <input type="text" id="new-username" name="username" required />
+
+      <label for="new-password">Password:</label>
+      <input type="password" id="new-password" name="password" required />
+      <!-- type = password is to have the pw hiden when typing -->
+
+      <button type="submit">Create account.</button>
+    </form>
+
+    <h3 id="status-message"></h3>
+  </body>
+</html>
