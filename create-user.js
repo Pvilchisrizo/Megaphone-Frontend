@@ -4,18 +4,21 @@ const statusMessage = document.getElementById("status-message");
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
+  // event.preventDefault stops the browser from executing its built-in default action associated with a specific eventForms: Stops <form> elements from submitting and refreshing the page. This is critical for validating data or sending inputs asynchronously via APIs
 
-  const username = forrm.elements.username.value;
+  const username = form.elements.username.value;
   const password = form.element.password.value;
 
-  const responsem = await fetch(`${baseURL}/users`, {
+  const response = await fetch(`${baseURL}/users`, {
     method: "POST",
+    // headers is equivalent of the postman menu where you select body and json
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       username: username,
       password: password,
     }),
   });
+
   if (!response.ok) {
     statusMessage.innerText = `Failed to create a new user.`;
     return flase;

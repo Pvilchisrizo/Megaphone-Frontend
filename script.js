@@ -1,6 +1,6 @@
 const form = document.getElementById("new-post-form");
-const baseURL = `https://megaphone-backend-paloma.onrender.com`;
-// const baseURL = `http://localhost:3000`;
+// const baseURL = `https://megaphone-backend-paloma.onrender.com`;
+const baseURL = `http://localhost:3000`;
 
 const getPosts = async () => {
   const response = await fetch(`${baseURL}/posts`);
