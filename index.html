@@ -11,25 +11,23 @@
   <body>
     <h1><span style="font-size: 1.3em">📣</span> Soapbox</h1>
     <p id="tagline">Say it louder. Or don't. We'll post it either way.</p>
-    <form id="new-post-form">
+  </h1>
+  <p><a href="newuser.html">Create account</a></p>
+  <form id="login-form">
+      <label for="login-username">Username:</label>
+      <input type="text" name="username" id="login-username" required>
+      <label for="login-password">Password:</label>
+      <input type="password" name="password" id="login-password" required>
+      <button type="submit">Login</button>
+  </form>
+  <p id="login-status">Not logged in.</p>
+  <button id="logout-button" type="button">Logout</button>
+  <form id="new-post-form">
       <label for="post-body">Post body:</label>
-      <input
-        type="text"
-        name="body"
-        id="post-body"
-        required
-        title="Please write something to post"
-      />
-      <label for="post-user">Username:</label>
-      <input
-        type="text"
-        name="user"
-        id="post-user"
-        required
-        title="Please enter your username"
-      />
+      <textarea name="body" id="post-body" rows="5"></textarea>
       <button type="submit">POST</button>
-    </form>
-    <ul id="all-posts"></ul>
-  </body>
+  </form>
+  <ul id="all-posts"></ul>
+</body>
 </html>
+    

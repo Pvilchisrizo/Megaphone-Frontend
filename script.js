@@ -1,6 +1,22 @@
-const baseURL = `https://megaphone-backend-paloma.onrender.com`;
+//const baseURL = `https://megaphone-backend-paloma.onrender.com`;
 const form = document.getElementById("new-post-form");
+const loginForm = document.getElementById("login-form");
+const loginStatus = document.getElementById("login-status");
+const logoutButton = document.getElementById("logout-button");
+const baseURL =
+  window.location.protocol === "file:"
+    ? "http://localhost:3000"
+    : window.location.origin;
 const deleteEnabled = false;
+let currentUser = localStorage.getItem("megaphone-username");
+
+const updateAuthUi = () => {
+  loginStatus.innerText = currentUser
+    ? `Logged in as ${currentUser}.`
+    : "Not logged in.";
+  form.style.display = currentUser ? "flex" : "none";
+  logoutButton.style.display = currentUser ? "inline-block" : "none";
+};
 
 const getPosts = async (username = null) => {
   const response = await fetch(`${baseURL}/posts`);
@@ -107,6 +123,7 @@ const addPostsToPage = (posts) => {
 };
 
 getPosts();
+updateAuthUi();
 
 const usernameClickEvent = (event) => {
   getPosts(event.target.innerText);
@@ -115,12 +132,16 @@ const usernameClickEvent = (event) => {
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
 
+  if (!currentUser) {
+    return;
+  }
+
   await fetch(`${baseURL}/posts`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       body: form.elements.body.value,
-      author: form.elements.user.value,
+      author: currentUser,
     }),
   }).then((response) => {
     return response.json();
@@ -128,4 +149,34 @@ form.addEventListener("submit", async (event) => {
 
   getPosts();
   form.reset();
+});
+
+loginForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const response = await fetch(`${baseURL}/login/password`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      username: loginForm.elements.username.value,
+      password: loginForm.elements.password.value,
+    }),
+  });
+
+  if (!response.ok) {
+    loginStatus.innerText = "Incorrect username or password.";
+    return;
+  }
+
+  const user = await response.json();
+  currentUser = user.username;
+  localStorage.setItem("megaphone-username", currentUser);
+  updateAuthUi();
+  loginForm.reset();
+});
+
+logoutButton.addEventListener("click", () => {
+  currentUser = null;
+  localStorage.removeItem("megaphone-username");
+  updateAuthUi();
 });
