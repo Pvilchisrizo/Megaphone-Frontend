@@ -1,5 +1,5 @@
 const baseURL = `https://megaphone-backend-paloma.onrender.com`;
-const form = document.getElementById("new-post-form");
+const form = document.getElementById("new-user-form");
 const statusMessage = document.getElementById("status-message");
 
 form.addEventListener("submit", async (event) => {
@@ -9,7 +9,7 @@ form.addEventListener("submit", async (event) => {
   const username = form.elements.username.value;
   const password = form.element.password.value;
 
-  const response = await fetch(`${baseURL}/users`, {
+  const response = await fetch(`${baseURL}/signup`, {
     method: "POST",
     // headers is equivalent of the postman menu where you select body and json
     headers: { "Content-Type": "application/json" },
